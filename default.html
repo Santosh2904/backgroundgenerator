@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Title</title>
+    <script  type="text/javascript">
+       function Click(){
+           document.getElementById("santo").innerHTML="This is Panindra";
+           var x = document.getElementById("santo").innerHTML;
+           alert(x)
+       }
+
+       function fn1(){
+           var str= document.getElementById("text1").value;
+           alert("Value inside the textbox is:" +str)
+       }
+
+       function fn2(){
+           var rd1 = document.getElementById("rd1");
+           var rd2 = document.getElementById("rd2");
+
+           if(rd1.checked == true){
+               alert("The channel selected is:" +rd1.value);
+            }   
+            else if(rd2.checked == true){
+                alert("The channel selected is:" +rd2.value);
+            }
+            else{
+                alert("No channel is selected");
+            }   
+           
+       }
+
+       function fn3(){
+           var select = document.getElementById("selectbox");
+           alert(select.options[select.selectedIndex].value)
+       }
+
+       function changeStyling(){
+           var para = document.getElementsByTagName("p");
+           para[3].style.fontSize=25;
+           para[1].style.color="red";
+           para[2].style.fontWeight="bold";
+           alert(para[0].innerHTML);
+           for(var i=0;i<para.length;i++){
+               para[i].style.color="blue";
+           }
+
+       }
+
+       function changeStyling1(){
+           var paras = document.getElementsByClassName("mypara");
+           for(var x=0;x<paras.length;x++){
+               paras[x].style.color = "yellow";
+           }
+       }
+
+       function setNewImage(){
+           document.getElementById("img1").src="tiger.png";
+       }
+
+       function setOldImage(){
+           document.getElementById("img1").src="lion.png"
+       }
+
+       function validation(){
+           var username = document.getElementById("uname");
+           var password = document.getElementById("pass");
+
+           if(username.value =="" || password.value == "" ){
+               alert("no empty values are allowed");
+               return false
+           }
+           else{
+               return true
+           }
+       }
+
+       function validation1(){
+           var uname = document.getElementById("uname1");
+           var pass = document.getElementById("pass1");
+
+           if(uname.value.trim()=="" ){
+               //alert("Blank username and spaces not allowed");
+               uname.style.border = "solid 3px red";
+               document.getElementById("lbluser").style.visibility="visible";
+               return false;
+           }
+           else if(pass.value.trim()==""){
+               alert("Blank Password or has spaces");
+               //pass.style.border = "solid 3px red";
+               return false
+           }
+           else if(pass.value.trim().length<5){
+                alert("Password too short")
+                return false
+           }
+           else{
+               return true
+           }
+       }
+   
+    </script>
+</head>
+<body>
+    <button onclick="Click()">Click</button>
+    <p id="santo">This is Santosh</p>
+    <input id="text1" placeholder="write something">
+    <br>
+    <input type="password" id="text2" placeholder="write something"><br>
+    <button onclick="fn1()" id="btn1">Click me</button><br>
+    <input name="grp1" type="radio" id="rd1" value="Simple Snippet">Simple Snippet</input><br>
+    <input name="grp1" type="radio" id="rd2" value="Telusko">Telusko</input><br>
+    <button onclick="fn2()" id="btn2">Click me 2</button><br>
+    <select id="selectbox">
+        <option value="Simple Snippe">Simple Snippet</option>
+        <option value="Telusko">Telusko</option>
+        <option value="MKBHD">MKBHD</option>
+    </select>
+    <button onclick="fn3()" id="btn3">Click me 3</button><br>
+    <p>this is para 1</p>
+    <p>this is para 2</p>
+    <p>this is para 3</p>
+    <p>this is para 4</p>
+    <button onclick="changeStyling()" id="btn4">Click me 4</button><br> 
+    
+    <p class="mypara">This is paragraph 1</p>
+    <p>This is paragraph 2</p>
+    <p class="mypara">This is paragraph 3</p>
+    <p>This is paragraph 4</p>
+    <a href="#" class="mypara">This is Anchor tag</a><br>
+    <button onclick="changeStyling1()" >Click me 5</button><br>
+    <img id="img1" onmouseover="setNewImage()" onmouseout="setOldImage()" src="lion.png" width="300"><br>
+    <form onsubmit="return validation()" action="message.html">
+        <input type="text" id="uname" placeholder="Username">
+        <input type="password" id="pass" placeholder="Password">
+        <button type="submit">Submit</button>
+    </form>
+    <form onsubmit="return validation1()" action="message.html">
+        <input type="text" id="uname1" placeholder="Username1">
+        <label id="lbluser" style="color:red; visibility:hidden;">Invalid</label><br>
+        <input type="password" id="pass1" placeholder="Password1">
+        <button type="submit">Submit1</button>
+    </form>
+</body>
+</html>
